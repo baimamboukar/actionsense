@@ -1,0 +1,38 @@
+name: Auto-merge Dependabot PRs
+
+on:
+  pull_request:
+
+jobs:
+  auto-merge:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Check if PR is from Dependabot
+        id: check_dependabot_author
+        run: |
+          if [[ ${{ github.actor }} == 'dependabot[bot]' ]]; then
+            echo "::set-output name=is_dependabot::true"
+          else
+            echo "::set-output name=is_dependabot::false"
+          fi
+
+      - name: Merge PR if conditions met
+        if: ${{ steps.check_dependabot_author.outputs.is_dependabot == 'true' }}
+        uses: actions/github-script@v6
+        with:
+          script: |
+            github.issues.addAssignees({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              assignees: ['dependabot[bot]']
+            })
+
+      - name: Merge PR (manually configured)
+        if: ${{ steps.check_dependabot_author.outputs.is_dependabot == 'true' }}
+        uses: actions/merge@v2
+        with:
+          method: squash # Adjust merge method as needed
+        # Add additional conditions (e.g., status checks passing) here

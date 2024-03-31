@@ -1,20 +1,19 @@
-# ACTIONSENSE
-A set of reusable Github Actions
-----
+# Actionsense
+A set of reusable `github actions` workflows.
 
-Table of Contents
-I. [Introduction](#introduction)
-II. [Actions](#actions)
-    1. [Python Actions](#python-actions)
-    2. [Docker Actions](#docker-actions)
-    3. [Kubernetes Actions](#kubernetes-actions)
-    4. [AWS Actions](#aws-actions)
-    5. [GCP Actions](#gcp-actions)
-    6. [Azure Actions](#azure-actions)
-    7. [Dart Actions](#dart-actions)
-    
-III. [Usage](#usage)
-IV. [Contributing](#contributing)
-V. [License](#license)
-
-    
+## Workflows
+- [Release](#release)
+- [Publish](#publish)
+- [Test](#test)
+- [Build](#build)
+- [Deploy](#deploy)
+- [Lint](#lint)
+- [Format](#format)
+- [Docs](#docs)
+- [Security](#security)
+- [CodeQL](#codeql)
+- [CodeCov](#codecov)
+- [CodeClimate](#codeclimate)
+- [SonarCloud](#sonarcloud)
+- [Docker](#docker)
+- [Kubernetes](#kubernetes)

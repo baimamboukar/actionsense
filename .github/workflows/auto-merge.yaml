@@ -7,7 +7,7 @@ jobs:
   auto-merge:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Check if PR is from Dependabot
         id: check_dependabot_author
@@ -20,7 +20,7 @@ jobs:
 
       - name: Merge PR if conditions met
         if: ${{ steps.check_dependabot_author.outputs.is_dependabot == 'true' }}
-        uses: actions/github-script@v6
+        uses: actions/github-script@v7
         with:
           script: |
             github.issues.addAssignees({
